@@ -10,14 +10,14 @@ import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.time.LocalDateTime
 
 @Composable
-fun ContactsTabContent() {
+fun GroupsTabContent() {
     // Chat items
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         // unread message
         item {
             ChatListItem(
                 avatar = null,
-                name = "Shubendu CDIS IIT Stock Market Chandigarh",
+                name = "Workshop on Sneak Peak into Therapy Room",
                 lastMessageAt = LocalDateTime.now(),
                 lastChatContent = ChatContent.PhotoContent(),
                 unreadChatsCount = 20
@@ -28,17 +28,7 @@ fun ContactsTabContent() {
         item {
             ChatListItem(
                 avatar = null,
-                name = "Shubendu CDIS IIT Stock Market Chandigarh",
-                lastMessageAt = LocalDateTime.now(),
-                lastChatContent = ChatContent.PhotoContent(),
-            )
-        }
-
-        // unsaved contact message
-        item {
-            ChatListItem(
-                avatar = null,
-                name = "+91 701 510 8956",
+                name = "Group B- Sign Language Classes",
                 lastMessageAt = LocalDateTime.now(),
                 lastChatContent = ChatContent.PhotoContent(),
             )
@@ -48,8 +38,8 @@ fun ContactsTabContent() {
 
 @Preview
 @Composable
-fun ContactsTabContentPreview() {
+fun GroupsTabContentPreview() {
     DevelopBharatTheme {
-        ContactsTabContent()
+        GroupsTabContent()
     }
 }

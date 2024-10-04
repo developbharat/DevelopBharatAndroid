@@ -2,13 +2,10 @@ package com.developbharat.developbharat.modules.chat.screens.home.components
 
 import android.graphics.Bitmap
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Icon
@@ -25,6 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.developbharat.developbharat.common.ChatContent
 import com.developbharat.developbharat.common.useIcon
+import com.developbharat.developbharat.modules.common.components.CustomBadge
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -79,7 +77,8 @@ fun ChatListItem(
             ) {
                 // 🖼 Photo received
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(5.dp), verticalAlignment = Alignment.CenterVertically
+                    horizontalArrangement = Arrangement.spacedBy(5.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     val icon = lastChatContent.useIcon()
                     if (icon != null) {
@@ -95,13 +94,7 @@ fun ChatListItem(
 
                 // Badge for unread messages: 20
                 if (hasUnreadChats) {
-                    Text(
-                        text = unreadChatsCount.toString(),
-                        modifier = Modifier
-                            .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(4.dp))
-                            .padding(horizontal = 4.dp, vertical = 2.dp),
-                        color = MaterialTheme.colorScheme.onPrimary
-                    )
+                    CustomBadge(content = unreadChatsCount.toString())
                 }
             }
         }

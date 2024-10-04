@@ -10,4 +10,10 @@ import javax.inject.Inject
 class ChatHomeViewModel @Inject constructor() : ViewModel() {
     private val _state = mutableStateOf(ChatHomeState())
     val state: State<ChatHomeState> = _state
+
+
+    fun updateChatsCounts() {
+        _state.value =
+            _state.value.copy(tabs = ChatTabs.fromUnreadCounts(contacts = 40, groups = 0, bots = 0))
+    }
 }

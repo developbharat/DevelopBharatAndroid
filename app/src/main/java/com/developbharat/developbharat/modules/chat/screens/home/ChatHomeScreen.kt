@@ -9,52 +9,63 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.developbharat.developbharat.modules.chat.screens.home.components.ChatTab
-import com.developbharat.developbharat.modules.chat.screens.home.components.ChatTabs
+import com.developbharat.developbharat.modules.chat.screens.home.components.BotsTabContent
 import com.developbharat.developbharat.modules.chat.screens.home.components.ContactsTabContent
+import com.developbharat.developbharat.modules.chat.screens.home.components.GroupsTabContent
 import com.developbharat.developbharat.modules.common.components.SmallTopBar
+import com.developbharat.developbharat.modules.common.components.Tabs
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
+import java.util.Timer
+import kotlin.concurrent.schedule
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatHomeScreen(navController: NavController, viewModel: ChatHomeViewModel = hiltViewModel()) {
+    val state = viewModel.state.value;
 
-    var state by remember { mutableStateOf(0) }
+
+    // TODO: Remove and replace with actual logic Just to simulate tab updates
+    LaunchedEffect(Unit) {
+        Timer().schedule(2000) {
+            viewModel.updateChatsCounts()
+        }
+    }
 
 
     Scaffold(topBar = {
-        SmallTopBar(
-            title = "Chats",
-            subtitle = "Loading...",
-            actions = {
-                IconButton(onClick = {}) { Icon(Icons.Outlined.Search, contentDescription = "Search") }
-                IconButton(onClick = {}) { Icon(Icons.Outlined.MoreVert, contentDescription = "More") }
-            })
+        SmallTopBar(title = "Chats", subtitle = "Loading...", actions = {
+            IconButton(onClick = {}) {
+                Icon(
+                    Icons.Outlined.Search, contentDescription = "Search"
+                )
+            }
+            IconButton(onClick = {}) {
+                Icon(
+                    Icons.Outlined.MoreVert, contentDescription = "More"
+                )
+            }
+        })
     }) { paddingValues ->
         Surface(modifier = Modifier.padding(paddingValues)) {
-            ChatTabs(defaultSelectedTab = 0) { selectedTab ->
+            Tabs(initialSelectedTab = 0, tabs = state.tabs) { selectedTab ->
                 when (selectedTab) {
-                    is ChatTab.Contacts -> {
+                    is ChatTabs.Contacts -> {
                         ContactsTabContent()
                     }
 
-                    is ChatTab.Groups -> {
-                        Text("Groups")
+                    is ChatTabs.Groups -> {
+                        GroupsTabContent()
                     }
 
-                    is ChatTab.Bots -> {
-                        Text("Groups")
+                    is ChatTabs.Bots -> {
+                        BotsTabContent()
                     }
                 }
             }
