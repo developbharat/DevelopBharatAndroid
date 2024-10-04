@@ -3,7 +3,10 @@ package com.developbharat.developbharat.modules.chat.screens.home
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Contacts
 import androidx.compose.material.icons.outlined.Group
+import androidx.compose.material.icons.outlined.Groups
 import androidx.compose.material.icons.outlined.SmartToy
+import androidx.compose.material.icons.outlined.SpatialAudio
+import androidx.compose.material.icons.outlined.SpeakerGroup
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.developbharat.developbharat.modules.common.components.ITab
 
@@ -17,7 +20,7 @@ sealed class ChatTabs(
     class Contacts(unreadCount: Int? = null) :
         ChatTabs(
             title = "Contacts",
-            icon = Icons.Outlined.Contacts,
+            icon = Icons.Outlined.Group,
             enabled = true,
             badge = if (unreadCount == null || unreadCount <= 0) null else unreadCount.toString()
         )
@@ -25,7 +28,7 @@ sealed class ChatTabs(
     class Groups(unreadCount: Int? = null) :
         ChatTabs(
             title = "Groups",
-            icon = Icons.Outlined.Group,
+            icon = Icons.Outlined.Groups,
             enabled = true,
             badge = if (unreadCount == null || unreadCount <= 0) null else unreadCount.toString()
         )

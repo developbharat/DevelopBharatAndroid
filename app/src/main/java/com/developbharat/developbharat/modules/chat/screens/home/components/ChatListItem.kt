@@ -2,6 +2,7 @@ package com.developbharat.developbharat.modules.chat.screens.home.components
 
 import android.graphics.Bitmap
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,68 +36,71 @@ fun ChatListItem(
     lastMessageAt: LocalDateTime,
     lastChatContent: ChatContent? = null,
     unreadChatsCount: Int = 0,
-
-    ) {
+    onClick: () -> Unit
+) {
     val hasUnreadChats = unreadChatsCount > 0
 
     // Read Chat item
-    ListItem(leadingContent = {
-        if (avatar != null) {
-            Image(bitmap = avatar.asImageBitmap(), contentDescription = "$name avatar")
-        } else {
-            Icon(Icons.Outlined.Person, contentDescription = "User Avatar")
-        }
-
-    }, headlineContent = {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.Top
-        ) {
-            Text(
-                name,
-                modifier = Modifier.weight(1f),
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 1,
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = if (hasUnreadChats) FontWeight.Medium else FontWeight.Normal
-            )
-
-            Text(
-                text = lastMessageAt.format(DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH)),
-                style = MaterialTheme.typography.labelSmall,
-                color = if (hasUnreadChats) MaterialTheme.colorScheme.primary else Color.Unspecified
-            )
-        }
-    }, supportingContent = {
-        if (lastChatContent != null) {
+    ListItem(
+        modifier = Modifier.clickable { onClick() },
+        leadingContent = {
+            if (avatar != null) {
+                Image(bitmap = avatar.asImageBitmap(), contentDescription = "$name avatar")
+            } else {
+                Icon(Icons.Outlined.Person, contentDescription = "User Avatar")
+            }
+        },
+        headlineContent = {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.Top
             ) {
-                // 🖼 Photo received
+                Text(
+                    name,
+                    modifier = Modifier.weight(1f),
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = if (hasUnreadChats) FontWeight.Medium else FontWeight.Normal
+                )
+
+                Text(
+                    text = lastMessageAt.format(DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH)),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (hasUnreadChats) MaterialTheme.colorScheme.primary else Color.Unspecified
+                )
+            }
+        },
+        supportingContent = {
+            if (lastChatContent != null) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(5.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    val icon = lastChatContent.useIcon()
-                    if (icon != null) {
-                        Icon(
-                            imageVector = icon,
-                            contentDescription = lastChatContent.shortDescription,
-                            modifier = Modifier.height(15.dp)
-                        )
+                    // 🖼 Photo received
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(5.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val icon = lastChatContent.useIcon()
+                        if (icon != null) {
+                            Icon(
+                                imageVector = icon,
+                                contentDescription = lastChatContent.shortDescription,
+                                modifier = Modifier.height(15.dp)
+                            )
+                        }
+
+                        Text(lastChatContent.shortDescription)
                     }
 
-                    Text(lastChatContent.shortDescription)
-                }
-
-                // Badge for unread messages: 20
-                if (hasUnreadChats) {
-                    CustomBadge(content = unreadChatsCount.toString())
+                    // Badge for unread messages: 20
+                    if (hasUnreadChats) {
+                        CustomBadge(content = unreadChatsCount.toString())
+                    }
                 }
             }
-        }
-    })
+        })
 }

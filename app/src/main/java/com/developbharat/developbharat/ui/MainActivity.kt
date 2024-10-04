@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.developbharat.developbharat.modules.chat.core.ChatScreens
+import com.developbharat.developbharat.modules.chat.screens.communicate.ChatCommunicateScreen
 import com.developbharat.developbharat.modules.chat.screens.home.ChatHomeScreen
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +24,7 @@ class MainActivity : ComponentActivity() {
                 NavHost(navController = navController, startDestination = ChatScreens.ChatHomeScreen) {
                     // chat screens
                     composable<ChatScreens.ChatHomeScreen> { ChatHomeScreen(navController) }
+                    composable<ChatScreens.ChatCommunicateScreen> { ChatCommunicateScreen(navController) }
                 }
             }
         }

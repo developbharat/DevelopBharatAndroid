@@ -57,7 +57,7 @@ fun ChatHomeScreen(navController: NavController, viewModel: ChatHomeViewModel = 
             Tabs(initialSelectedTab = 0, tabs = state.tabs) { selectedTab ->
                 when (selectedTab) {
                     is ChatTabs.Contacts -> {
-                        ContactsTabContent()
+                        ContactsTabContent(navController)
                     }
 
                     is ChatTabs.Groups -> {

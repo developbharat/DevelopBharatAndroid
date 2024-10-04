@@ -7,4 +7,7 @@ import kotlinx.serialization.Serializable
 sealed interface ChatScreens {
     @Serializable
     data object ChatHomeScreen : ChatScreens
+
+    @Serializable
+    data object ChatCommunicateScreen : ChatScreens
 }

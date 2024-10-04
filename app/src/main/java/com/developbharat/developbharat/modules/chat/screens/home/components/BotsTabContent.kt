@@ -20,7 +20,8 @@ fun BotsTabContent() {
                 name = "Super Resolution Bot",
                 lastMessageAt = LocalDateTime.now(),
                 lastChatContent = ChatContent.PhotoContent(),
-                unreadChatsCount = 20
+                unreadChatsCount = 20,
+                onClick = {}
             )
         }
 
@@ -31,6 +32,7 @@ fun BotsTabContent() {
                 name = "OTP Text Bot",
                 lastMessageAt = LocalDateTime.now(),
                 lastChatContent = ChatContent.PhotoContent(),
+                onClick = {}
             )
         }
     }

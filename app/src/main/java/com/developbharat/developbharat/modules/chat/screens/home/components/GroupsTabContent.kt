@@ -20,7 +20,8 @@ fun GroupsTabContent() {
                 name = "Workshop on Sneak Peak into Therapy Room",
                 lastMessageAt = LocalDateTime.now(),
                 lastChatContent = ChatContent.PhotoContent(),
-                unreadChatsCount = 20
+                unreadChatsCount = 20,
+                onClick = {}
             )
         }
 
@@ -31,6 +32,7 @@ fun GroupsTabContent() {
                 name = "Group B- Sign Language Classes",
                 lastMessageAt = LocalDateTime.now(),
                 lastChatContent = ChatContent.PhotoContent(),
+                onClick = {}
             )
         }
     }
