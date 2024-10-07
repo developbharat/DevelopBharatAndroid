@@ -3,7 +3,6 @@ package com.developbharat.developbharat.modules.chat.screens.home
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.developbharat.developbharat.common.domain.database.MainDatabase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

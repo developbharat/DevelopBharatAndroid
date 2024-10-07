@@ -38,7 +38,7 @@ object RootModule {
             sharedStore.useValue(SharedStoreKeys.DATABASE_PASSWORD, String::class.java)
         } else {
             val password =
-                (1..12).joinToString("") { "%02x".format(SecureRandom().nextInt(94)) }
+                (1..12).joinToString("") { "%02x".format(SecureRandom().nextInt(255)) }
             sharedStore.setValue(SharedStoreKeys.DATABASE_PASSWORD, password)
             password
         }
