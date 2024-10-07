@@ -87,10 +87,19 @@ dependencies {
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.extensions)
 
+    // sqlite database + room db
+    implementation(libs.sqlcipher)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
     // retrofit + gson
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp)
     implementation(libs.gson)
+}
+
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
 }

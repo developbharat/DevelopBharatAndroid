@@ -23,7 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.developbharat.developbharat.modules.chat.core.ChatContent
 import com.developbharat.developbharat.modules.chat.core.useIcon
-import com.developbharat.developbharat.modules.common.components.CustomBadge
+import com.developbharat.developbharat.common.components.CustomBadge
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale

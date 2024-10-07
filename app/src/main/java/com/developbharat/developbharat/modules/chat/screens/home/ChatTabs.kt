@@ -8,7 +8,7 @@ import androidx.compose.material.icons.outlined.SmartToy
 import androidx.compose.material.icons.outlined.SpatialAudio
 import androidx.compose.material.icons.outlined.SpeakerGroup
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.developbharat.developbharat.modules.common.components.ITab
+import com.developbharat.developbharat.common.components.ITab
 
 sealed class ChatTabs(
     override val title: String,

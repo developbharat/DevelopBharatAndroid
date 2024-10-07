@@ -1,4 +1,4 @@
-package com.developbharat.developbharat.modules.common.components
+package com.developbharat.developbharat.common.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding

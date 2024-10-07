@@ -3,6 +3,7 @@ package com.developbharat.developbharat.modules.chat.screens.home
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.developbharat.developbharat.common.domain.database.MainDatabase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -10,7 +11,6 @@ import javax.inject.Inject
 class ChatHomeViewModel @Inject constructor() : ViewModel() {
     private val _state = mutableStateOf(ChatHomeState())
     val state: State<ChatHomeState> = _state
-
 
     fun updateChatsCounts() {
         _state.value =

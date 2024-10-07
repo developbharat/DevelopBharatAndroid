@@ -33,10 +33,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.developbharat.developbharat.modules.chat.core.ChatContent
-import com.developbharat.developbharat.common.fillColor
+import com.developbharat.developbharat.common.core.fillColor
 import com.developbharat.developbharat.modules.chat.core.TextContentData
-import com.developbharat.developbharat.modules.common.components.SmallTopBar
-import com.developbharat.developbharat.modules.common.models.UserAccount
+import com.developbharat.developbharat.common.components.SmallTopBar
+import com.developbharat.developbharat.common.domain.models.UserAccount
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.time.LocalDateTime
 

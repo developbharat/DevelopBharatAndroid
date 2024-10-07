@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.developbharat.developbharat.modules.chat.core.ChatContent
 import com.developbharat.developbharat.modules.chat.core.TextContentData
-import com.developbharat.developbharat.modules.common.models.UserAccount
+import com.developbharat.developbharat.common.domain.models.UserAccount
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

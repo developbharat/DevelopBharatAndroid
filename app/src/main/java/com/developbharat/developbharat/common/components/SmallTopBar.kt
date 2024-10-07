@@ -1,4 +1,4 @@
-package com.developbharat.developbharat.modules.common.components
+package com.developbharat.developbharat.common.components
 
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -27,7 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.developbharat.developbharat.common.fillColor
+import com.developbharat.developbharat.common.core.fillColor
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 
 

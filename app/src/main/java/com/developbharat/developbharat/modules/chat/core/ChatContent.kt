@@ -6,7 +6,7 @@ import androidx.compose.material.icons.outlined.EmojiObjects
 import androidx.compose.material.icons.outlined.Photo
 import androidx.compose.material.icons.outlined.VideoSettings
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.developbharat.developbharat.modules.common.models.UserAccount
+import com.developbharat.developbharat.common.domain.models.UserAccount
 import java.time.LocalDateTime
 
 sealed class ChatContent(val shortDescription: String) {
@@ -35,4 +35,25 @@ data class TextContentData(
     val sender: UserAccount,
     val isSent: Boolean,
     val createdAt: LocalDateTime
+)
+
+
+data class PhotoContentData(
+    val filepath: String,
+    val thumbnail: String,
+    val fileSizeInBytes: Long,
+    val md5Sum: String,
+)
+
+data class AudioContentData(
+    val filepath: String,
+    val fileSizeInBytes: Long,
+    val md5Sum: String,
+)
+
+data class VideoContentData(
+    val filepath: String,
+    val thumbnail: String,
+    val fileSizeInBytes: Long,
+    val md5Sum: String,
 )

@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -16,11 +15,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.developbharat.developbharat.common.components.SmallTopBar
+import com.developbharat.developbharat.common.components.Tabs
 import com.developbharat.developbharat.modules.chat.screens.home.components.BotsTabContent
 import com.developbharat.developbharat.modules.chat.screens.home.components.ContactsTabContent
 import com.developbharat.developbharat.modules.chat.screens.home.components.GroupsTabContent
-import com.developbharat.developbharat.modules.common.components.SmallTopBar
-import com.developbharat.developbharat.modules.common.components.Tabs
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.util.Timer
 import kotlin.concurrent.schedule

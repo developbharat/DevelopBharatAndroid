@@ -1,4 +1,4 @@
-package com.developbharat.developbharat.modules.common.components
+package com.developbharat.developbharat.common.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
