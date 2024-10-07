@@ -25,7 +25,6 @@ import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.util.Timer
 import kotlin.concurrent.schedule
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatHomeScreen(navController: NavController, viewModel: ChatHomeViewModel = hiltViewModel()) {
     val state = viewModel.state.value;

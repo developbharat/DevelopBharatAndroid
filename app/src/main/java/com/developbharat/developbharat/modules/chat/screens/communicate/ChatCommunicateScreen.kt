@@ -32,9 +32,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.developbharat.developbharat.common.ChatContent
+import com.developbharat.developbharat.modules.chat.core.ChatContent
 import com.developbharat.developbharat.common.fillColor
-import com.developbharat.developbharat.modules.chat.domain.models.chatcontent.ShortTextContentData
+import com.developbharat.developbharat.modules.chat.core.TextContentData
 import com.developbharat.developbharat.modules.common.components.SmallTopBar
 import com.developbharat.developbharat.modules.common.models.UserAccount
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
@@ -98,8 +98,8 @@ fun ChatCommunicateScreen(navController: NavController) {
                             lastSeenAt = LocalDateTime.now()
                         )
                         TextChatContent(
-                            textContent = ChatContent.ShortTextContent(
-                                data = ShortTextContentData(
+                            textContent = ChatContent.TextContent(
+                                data = TextContentData(
                                     content = expandedString,
                                     sender = sender,
                                     isSent = true,
@@ -122,8 +122,8 @@ fun ChatCommunicateScreen(navController: NavController) {
                             lastSeenAt = LocalDateTime.now()
                         )
                         TextChatContent(
-                            textContent = ChatContent.ShortTextContent(
-                                data = ShortTextContentData(
+                            textContent = ChatContent.TextContent(
+                                data = TextContentData(
                                     content = expandedString,
                                     sender = sender,
                                     isSent = false,

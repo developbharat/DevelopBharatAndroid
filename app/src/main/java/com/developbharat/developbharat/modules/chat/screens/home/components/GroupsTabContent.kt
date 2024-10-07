@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.developbharat.developbharat.common.ChatContent
+import com.developbharat.developbharat.modules.chat.core.ChatContent
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.time.LocalDateTime
 

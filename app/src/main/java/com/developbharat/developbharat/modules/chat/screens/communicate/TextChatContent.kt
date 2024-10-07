@@ -25,8 +25,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.developbharat.developbharat.common.ChatContent
-import com.developbharat.developbharat.modules.chat.domain.models.chatcontent.ShortTextContentData
+import com.developbharat.developbharat.modules.chat.core.ChatContent
+import com.developbharat.developbharat.modules.chat.core.TextContentData
 import com.developbharat.developbharat.modules.common.models.UserAccount
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.time.LocalDateTime
@@ -34,7 +34,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 @Composable
-fun TextChatContent(textContent: ChatContent.ShortTextContent) {
+fun TextChatContent(textContent: ChatContent.TextContent) {
     var expanded by rememberSaveable { mutableStateOf(false) }
 
     OutlinedCard(
@@ -122,8 +122,8 @@ fun SentChatContentPreview() {
                 lastSeenAt = LocalDateTime.now()
             )
             TextChatContent(
-                textContent = ChatContent.ShortTextContent(
-                    data = ShortTextContentData(
+                textContent = ChatContent.TextContent(
+                    data = TextContentData(
                         content = expandedString,
                         sender = sender,
                         isSent = true,
@@ -133,8 +133,8 @@ fun SentChatContentPreview() {
             )
 
             TextChatContent(
-                textContent = ChatContent.ShortTextContent(
-                    data = ShortTextContentData(
+                textContent = ChatContent.TextContent(
+                    data = TextContentData(
                         content = expandedString,
                         sender = sender,
                         isSent = false,

@@ -1,4 +1,4 @@
-package com.developbharat.developbharat.common
+package com.developbharat.developbharat.modules.chat.core
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Audiotrack
@@ -6,12 +6,13 @@ import androidx.compose.material.icons.outlined.EmojiObjects
 import androidx.compose.material.icons.outlined.Photo
 import androidx.compose.material.icons.outlined.VideoSettings
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.developbharat.developbharat.modules.chat.domain.models.chatcontent.ShortTextContentData
+import com.developbharat.developbharat.modules.common.models.UserAccount
+import java.time.LocalDateTime
 
 sealed class ChatContent(val shortDescription: String) {
-    class ShortTextContent(val data: ShortTextContentData) :
+    class TextContent(val data: TextContentData) :
         ChatContent(shortDescription = data.content.substring(0..100))
-    
+
     class PhotoContent() : ChatContent(shortDescription = "Photo")
     class AudioContent() : ChatContent(shortDescription = "Audio")
     class VideoContent() : ChatContent(shortDescription = "Video")
@@ -21,10 +22,17 @@ sealed class ChatContent(val shortDescription: String) {
 
 fun ChatContent.useIcon(): ImageVector? {
     return when (this) {
-        is ChatContent.ShortTextContent -> null
+        is ChatContent.TextContent -> null
         is ChatContent.AudioContent -> Icons.Outlined.Audiotrack
         is ChatContent.VideoContent -> Icons.Outlined.VideoSettings
         is ChatContent.StickerContent -> Icons.Outlined.EmojiObjects
         is ChatContent.PhotoContent -> Icons.Outlined.Photo
     }
 }
+
+data class TextContentData(
+    val content: String,
+    val sender: UserAccount,
+    val isSent: Boolean,
+    val createdAt: LocalDateTime
+)

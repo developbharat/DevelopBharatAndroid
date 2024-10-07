@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.developbharat.developbharat.common.ChatContent
+import com.developbharat.developbharat.modules.chat.core.ChatContent
 import com.developbharat.developbharat.modules.chat.core.ChatScreens
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.time.LocalDateTime
