@@ -49,6 +49,8 @@ data class ConversationRecord(
 
     @ColumnInfo(name = "is_sent") var isSent: Boolean,
 
+    @ColumnInfo(name = "is_unread") var isUnread: Boolean,
+
     @ColumnInfo(name = "created_at") var createdAt: LocalDateTime = LocalDateTime.now(),
 ) {
 
@@ -58,7 +60,8 @@ data class ConversationRecord(
             isSent: Boolean,
             sentFromUserAccountId: Int,
             sentToUserAccountId: Int,
-            sentOrReceivedAt: LocalDateTime
+            sentOrReceivedAt: LocalDateTime,
+            isUnread: Boolean = true,
         ): ConversationRecord {
             return ConversationRecord(
                 textContent = content,
@@ -66,7 +69,8 @@ data class ConversationRecord(
                 sentFromUserAccountId = sentFromUserAccountId,
                 sentToUserAccountId = sentToUserAccountId,
                 sentOrReceivedAt = sentOrReceivedAt,
-                isSent = isSent
+                isSent = isSent,
+                isUnread = isUnread
             )
         }
 
@@ -75,7 +79,8 @@ data class ConversationRecord(
             sentFromUserAccountId: Int,
             sentToUserAccountId: Int,
             sentOrReceivedAt: LocalDateTime,
-            format: ConversationFormat
+            format: ConversationFormat,
+            isUnread: Boolean = true
         ): ConversationRecord {
             return ConversationRecord(
                 format = format,
@@ -83,6 +88,7 @@ data class ConversationRecord(
                 sentToUserAccountId = sentToUserAccountId,
                 sentOrReceivedAt = sentOrReceivedAt,
                 isSent = isSent,
+                isUnread = isUnread,
             )
         }
     }
@@ -116,6 +122,7 @@ data class ConversationRecordDbRes(
             sentOrReceivedAt = this.conversation.sentOrReceivedAt,
             isSent = this.conversation.isSent,
             createdAt = this.conversation.createdAt,
+            isUnread = this.conversation.isUnread
         )
     }
 }

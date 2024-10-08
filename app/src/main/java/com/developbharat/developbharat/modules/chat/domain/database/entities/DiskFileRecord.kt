@@ -9,6 +9,7 @@ import com.developbharat.developbharat.modules.chat.domain.models.DiskFile
 import java.time.LocalDateTime
 
 @Entity(
+    tableName = "disk_files",
     indices = [
         Index(value = ["filepath"], unique = true),
         Index(value = ["md5_sum"], unique = true),

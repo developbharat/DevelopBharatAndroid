@@ -23,4 +23,13 @@ interface ConversationDao {
     @Transaction
     @Query("SELECT * FROM conversations WHERE sent_to_user_account_id = :sentToUserAccountId")
     suspend fun listSentToUserAccountConversations(sentToUserAccountId: Int): List<ConversationRecordDbRes>
+
+    @Transaction
+    @Query("SELECT * FROM conversations WHERE sent_to_user_account_id = :contactId LIMIT 1;")
+    suspend fun findLastContactConversation(contactId: Int): ConversationRecordDbRes?
+
+    @Transaction
+    @Query("SELECT COUNT(*) FROM conversations WHERE sent_to_user_account_id = :contactId AND is_unread = 1;")
+    suspend fun countUnreadConversations(contactId: Int): Int
+
 }

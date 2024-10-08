@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d0f3be5de3d83ba283e147a5c0cee15a",
+    "identityHash": "fdcb70a1c38b806697d036d4398d8adf",
     "entities": [
       {
         "tableName": "user_accounts",
@@ -54,7 +54,7 @@
       },
       {
         "tableName": "conversations",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `text_content` TEXT NOT NULL, `format` TEXT NOT NULL, `sent_from_user_account_id` INTEGER NOT NULL, `sent_to_user_account_id` INTEGER NOT NULL, `disk_file_id` INTEGER, `sent_or_received_at` TEXT NOT NULL, `is_sent` INTEGER NOT NULL, `created_at` TEXT NOT NULL, FOREIGN KEY(`sent_from_user_account_id`) REFERENCES `user_accounts`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`sent_to_user_account_id`) REFERENCES `user_accounts`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`disk_file_id`) REFERENCES `DiskFileRecord`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `text_content` TEXT NOT NULL, `format` TEXT NOT NULL, `sent_from_user_account_id` INTEGER NOT NULL, `sent_to_user_account_id` INTEGER NOT NULL, `disk_file_id` INTEGER, `sent_or_received_at` TEXT NOT NULL, `is_sent` INTEGER NOT NULL, `is_unread` INTEGER NOT NULL, `created_at` TEXT NOT NULL, FOREIGN KEY(`sent_from_user_account_id`) REFERENCES `user_accounts`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`sent_to_user_account_id`) REFERENCES `user_accounts`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`disk_file_id`) REFERENCES `disk_files`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -101,6 +101,12 @@
           {
             "fieldPath": "isSent",
             "columnName": "is_sent",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isUnread",
+            "columnName": "is_unread",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -179,7 +185,7 @@
             ]
           },
           {
-            "table": "DiskFileRecord",
+            "table": "disk_files",
             "onDelete": "CASCADE",
             "onUpdate": "CASCADE",
             "columns": [
@@ -192,7 +198,7 @@
         ]
       },
       {
-        "tableName": "DiskFileRecord",
+        "tableName": "disk_files",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `filepath` TEXT NOT NULL, `thumbnail` TEXT NOT NULL, `file_size` INTEGER NOT NULL, `md5_sum` TEXT NOT NULL, `sent_at` TEXT NOT NULL, `created_at` TEXT NOT NULL)",
         "fields": [
           {
@@ -246,31 +252,31 @@
         },
         "indices": [
           {
-            "name": "index_DiskFileRecord_filepath",
+            "name": "index_disk_files_filepath",
             "unique": true,
             "columnNames": [
               "filepath"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_DiskFileRecord_filepath` ON `${TABLE_NAME}` (`filepath`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_disk_files_filepath` ON `${TABLE_NAME}` (`filepath`)"
           },
           {
-            "name": "index_DiskFileRecord_md5_sum",
+            "name": "index_disk_files_md5_sum",
             "unique": true,
             "columnNames": [
               "md5_sum"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_DiskFileRecord_md5_sum` ON `${TABLE_NAME}` (`md5_sum`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_disk_files_md5_sum` ON `${TABLE_NAME}` (`md5_sum`)"
           },
           {
-            "name": "index_DiskFileRecord_id",
+            "name": "index_disk_files_id",
             "unique": false,
             "columnNames": [
               "id"
             ],
             "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_DiskFileRecord_id` ON `${TABLE_NAME}` (`id`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_disk_files_id` ON `${TABLE_NAME}` (`id`)"
           }
         ],
         "foreignKeys": []
@@ -279,7 +285,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd0f3be5de3d83ba283e147a5c0cee15a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fdcb70a1c38b806697d036d4398d8adf')"
     ]
   }
 }

@@ -17,9 +17,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.developbharat.developbharat.common.components.SmallTopBar
 import com.developbharat.developbharat.common.components.Tabs
-import com.developbharat.developbharat.modules.chat.screens.home.components.BotsTabContent
-import com.developbharat.developbharat.modules.chat.screens.home.components.ContactsTabContent
-import com.developbharat.developbharat.modules.chat.screens.home.components.GroupsTabContent
+import com.developbharat.developbharat.modules.chat.screens.home.tabs.bots.BotsTabContent
+import com.developbharat.developbharat.modules.chat.screens.home.tabs.contacts.ContactsTabContent
+import com.developbharat.developbharat.modules.chat.screens.home.tabs.gropus.GroupsTabContent
 import com.developbharat.developbharat.ui.theme.DevelopBharatTheme
 import java.util.Timer
 import kotlin.concurrent.schedule
@@ -59,11 +59,11 @@ fun ChatHomeScreen(navController: NavController, viewModel: ChatHomeViewModel = 
                     }
 
                     is ChatTabs.Groups -> {
-                        GroupsTabContent()
+                        GroupsTabContent(navController)
                     }
 
                     is ChatTabs.Bots -> {
-                        BotsTabContent()
+                        BotsTabContent(navController)
                     }
                 }
             }
